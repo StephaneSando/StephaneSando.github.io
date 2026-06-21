@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétences - Stéphane Sando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-bg">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">SS</div>
+      <div>
+        <span class="nav-logo-name">Stéphane Sando</span>
+        <span class="nav-logo-sub">Big Data &amp; ML</span>
+      </div>
+    </a>
+    <div class="nav-links d-none d-lg-flex">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="about.html"      class="nav-link">À propos</a>
+      <a href="experience.html" class="nav-link">Expérience</a>
+      <a href="projects.html"   class="nav-link">Projets</a>
+      <a href="skills.html"     class="nav-link">Compétences</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-status d-none d-lg-flex"><span class="status-dot"></span>Disponible</div>
+      <a href="contact.html" class="btn-nav-contact">Me contacter</a>
+      <button class="burger d-flex d-lg-none" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <a href="index.html"      class="nav-link">Accueil</a>
+    <a href="about.html"      class="nav-link">À propos</a>
+    <a href="experience.html" class="nav-link">Expérience</a>
+    <a href="projects.html"   class="nav-link">Projets</a>
+    <a href="skills.html"     class="nav-link">Compétences</a>
+    <a href="contact.html"    class="nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Me contacter</a>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="container-md section-pad">
+    <div class="section-label">// Stack technique</div>
+    <h1 class="section-title">Compétences</h1>
+    <p class="section-desc">Ce que j'utilise vraiment - du notebook Python au cluster Spark, avec des détours par les dashboards et un peu d'infra.</p>
+
+    <!-- Azure cert badge -->
+    <a href="https://www.credly.com/badges/1e7e491c-f587-4750-8073-9c41e4e799e8/linked_in_profile" target="_blank" rel="noopener" class="cert-badge">
+      <div class="cert-icon">AZ</div>
+      <div>
+        <div class="cert-name">Microsoft Azure AI Fundamentals (AI-900)</div>
+        <div class="cert-status">✓ Certifié · Voir le badge →</div>
+      </div>
+    </a>
+
+    <!-- Bootstrap grid : 1 col mobile, 2 col md+ -->
+    <div class="row g-4">
+
+      <!-- Langages & ML -->
+      <div class="col-12 col-md-6">
+        <div class="skill-group h-100">
+          <div class="skill-group-header">
+            <span class="skill-group-dot" style="background:#F6A93B;"></span>
+            <h3 class="skill-group-name">Langages &amp; Machine Learning</h3>
+          </div>
+          <div class="skill-items">
+            <div><div class="skill-row"><span class="skill-name">Python</span><span class="skill-lvl">95%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="95%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Pandas</span><span class="skill-lvl">92%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="92%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Scikit-learn</span><span class="skill-lvl">88%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="88%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">TensorFlow / Keras</span><span class="skill-lvl">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="85%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">XGBoost</span><span class="skill-lvl">82%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="82%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">SHAP</span><span class="skill-lvl">78%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="78%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Big Data & Cloud -->
+      <div class="col-12 col-md-6">
+        <div class="skill-group h-100">
+          <div class="skill-group-header">
+            <span class="skill-group-dot" style="background:#34D1C9;"></span>
+            <h3 class="skill-group-name">Big Data &amp; Cloud</h3>
+          </div>
+          <div class="skill-items">
+            <div><div class="skill-row"><span class="skill-name">PySpark</span><span class="skill-lvl">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="85%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Hive</span><span class="skill-lvl">78%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="78%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">HDFS</span><span class="skill-lvl">78%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="78%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Azure - AI-900</span><span class="skill-lvl">80%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="80%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">GCP</span><span class="skill-lvl">72%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="72%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Visualisation -->
+      <div class="col-12 col-md-6">
+        <div class="skill-group h-100">
+          <div class="skill-group-header">
+            <span class="skill-group-dot" style="background:#F6A93B;"></span>
+            <h3 class="skill-group-name">Data Visualisation</h3>
+          </div>
+          <div class="skill-items">
+            <div><div class="skill-row"><span class="skill-name">Streamlit</span><span class="skill-lvl">90%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="90%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Power BI</span><span class="skill-lvl">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="85%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Plotly</span><span class="skill-lvl">82%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="82%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Kibana</span><span class="skill-lvl">72%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="72%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bases de données -->
+      <div class="col-12 col-md-6">
+        <div class="skill-group h-100">
+          <div class="skill-group-header">
+            <span class="skill-group-dot" style="background:#34D1C9;"></span>
+            <h3 class="skill-group-name">Bases de données</h3>
+          </div>
+          <div class="skill-items">
+            <div><div class="skill-row"><span class="skill-name">PostgreSQL</span><span class="skill-lvl">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="85%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">MongoDB</span><span class="skill-lvl">80%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="80%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Elasticsearch</span><span class="skill-lvl">72%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="72%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Neo4j</span><span class="skill-lvl">72%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="72%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Redis</span><span class="skill-lvl">70%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="70%" style="background:linear-gradient(90deg,#34D1C9,#56E5E0);"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DevOps & Backend -->
+      <div class="col-12 col-md-6">
+        <div class="skill-group h-100">
+          <div class="skill-group-header">
+            <span class="skill-group-dot" style="background:#F6A93B;"></span>
+            <h3 class="skill-group-name">DevOps &amp; Backend</h3>
+          </div>
+          <div class="skill-items">
+            <div><div class="skill-row"><span class="skill-name">Docker</span><span class="skill-lvl">85%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="85%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">FastAPI</span><span class="skill-lvl">82%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="82%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">GitHub Actions</span><span class="skill-lvl">78%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="78%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Django</span><span class="skill-lvl">75%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="75%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Flutter</span><span class="skill-lvl">75%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="75%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+            <div><div class="skill-row"><span class="skill-name">Ansible</span><span class="skill-lvl">68%</span></div><div class="skill-bar"><div class="skill-bar-fill" data-w="68%" style="background:linear-gradient(90deg,#F6A93B,#FFC062);"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="footer-logo">SS</div>
+      <span class="footer-copy">© 2026 Stéphane Sando - Big Data &amp; ML</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/stephane-sando" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://github.com/StephaneSando"       target="_blank" rel="noopener" class="footer-link">GitHub</a>
+      <a href="mailto:stephanesando@gmail.com"                                         class="footer-link">Email</a>
+    </div>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+<script>
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    document.querySelectorAll('.skill-bar-fill').forEach(function (el) {
+      el.style.width = el.getAttribute('data-w');
+    });
+  }, 120);
+});
+</script>
+</body>
+</html>

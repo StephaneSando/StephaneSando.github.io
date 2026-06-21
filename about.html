@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos - Stéphane Sando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-bg">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">SS</div>
+      <div>
+        <span class="nav-logo-name">Stéphane Sando</span>
+        <span class="nav-logo-sub">Big Data &amp; ML</span>
+      </div>
+    </a>
+    <div class="nav-links d-none d-lg-flex">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="about.html"      class="nav-link">À propos</a>
+      <a href="experience.html" class="nav-link">Expérience</a>
+      <a href="projects.html"   class="nav-link">Projets</a>
+      <a href="skills.html"     class="nav-link">Compétences</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-status d-none d-lg-flex"><span class="status-dot"></span>Disponible</div>
+      <a href="contact.html" class="btn-nav-contact">Me contacter</a>
+      <button class="burger d-flex d-lg-none" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <a href="index.html"      class="nav-link">Accueil</a>
+    <a href="about.html"      class="nav-link">À propos</a>
+    <a href="experience.html" class="nav-link">Expérience</a>
+    <a href="projects.html"   class="nav-link">Projets</a>
+    <a href="skills.html"     class="nav-link">Compétences</a>
+    <a href="contact.html"    class="nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Me contacter</a>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="container-md section-pad">
+    <div class="section-label">// À propos</div>
+    <h1 class="section-title">Qui je suis</h1>
+
+    <!-- Bootstrap grid : photo 3 col / bio 9 col à partir de md -->
+    <div class="row g-4 align-items-start">
+
+      <!-- Photo + CV -->
+      <div class="col-12 col-md-4 col-xl-3">
+        <div class="about-photo">
+          <img src="img/photo-profil.png" alt="Stéphane Sando" class="about-photo-img">
+          <a href="cv/CV ALTERNANCE DATA-IA.pdf" download class="btn btn-primary" style="font-size:14px;padding:13px;">↓ Télécharger mon CV (PDF)</a>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="col-12 col-md-8 col-xl-9">
+        <div class="about-body">
+          <p>Je suis <strong>Stéphane Sando</strong>, étudiant en M1 ingénieur à l'EFREI Paris, spécialité Big Data &amp; ML. Tout a commencé à Yaoundé, en classes préparatoires intégrées - c'est là que j'ai développé le goût des maths et compris que ce qui m'attire, c'est ce que les données peuvent révéler quand on sait les interroger.</p>
+          <p>Depuis, un an à l'ESIGELEC à Rouen pour le tronc commun ingénieur, puis l'EFREI pour me spécialiser. En parallèle : des projets concrets - pipelines ETL Hadoop, classification ML, une app mobile Flutter avec Firebase. Je n'hésite pas à rester bloqué plusieurs heures sur un problème difficile si c'est pour vraiment comprendre. C'est souvent comme ça que j'apprends le mieux.</p>
+
+          <!-- Disponibilité — Bootstrap grid : 1 col xs, 3 col sm+ -->
+          <div class="row g-3 mb-4">
+            <div class="col-12 col-sm-4">
+              <div class="avail-card">
+                <div class="avail-lbl">STAGE</div>
+                <div class="avail-val">4–6 mois · juil. 2026</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="avail-card">
+                <div class="avail-lbl">ALTERNANCE</div>
+                <div class="avail-val">12–24 mois · sept. 2026</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="avail-card">
+                <div class="avail-lbl">RYTHME ALT.</div>
+                <div class="avail-val">3j entreprise / 2j EFREI</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formation -->
+          <h3 class="sub-title">Formation</h3>
+          <div class="timeline">
+
+            <div class="tl-item">
+              <div class="tl-line">
+                <span class="tl-dot" style="background:#F6A93B;"></span>
+                <span class="tl-connector"></span>
+              </div>
+              <div>
+                <div class="tl-period" style="color:#F6A93B;">2025 - 2027</div>
+                <div class="tl-degree">Diplôme d'ingénieur - Majeure Big Data &amp; Machine Learning</div>
+                <div class="tl-school">EFREI Paris, Villejuif</div>
+                <div class="tl-detail">ML supervisé/non supervisé, deep learning, Spark/Hadoop, LLM, MLOps, cloud (Azure/GCP), déploiement de modèles. Rythme M2 : 3j entreprise / 2j formation.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-line">
+                <span class="tl-dot" style="background:#34D1C9;"></span>
+                <span class="tl-connector"></span>
+              </div>
+              <div>
+                <div class="tl-period" style="color:#34D1C9;">2024 - 2025</div>
+                <div class="tl-degree">Cycle ingénieur - Tronc commun (L3)</div>
+                <div class="tl-school">ESIGELEC, Rouen</div>
+                <div class="tl-detail">Mathématiques, algorithmique, Java, réseaux, bases de données (SQL / Oracle DB), gestion de projet.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-line">
+                <span class="tl-dot" style="background:#34D1C9;"></span>
+                <span class="tl-connector"></span>
+              </div>
+              <div>
+                <div class="tl-period" style="color:#34D1C9;">2022 - 2024</div>
+                <div class="tl-degree">Classes Préparatoires Intégrées (L1-L2)</div>
+                <div class="tl-school">Institut PREPAVOGT, Yaoundé (Cameroun)</div>
+                <div class="tl-detail">Mathématiques avancées, physique, sciences de l'ingénieur, programmation C. Bases analytiques pour intégrer un cycle ingénieur en France.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Procédé -->
+          <h3 class="sub-title" style="margin-top:14px;">Mon procédé</h3>
+          <div class="process">
+
+            <div class="proc-item">
+              <div class="proc-num">1</div>
+              <div class="proc-body">
+                <div class="proc-title">Compréhension du besoin</div>
+                <div class="proc-desc">Identifier les objectifs métier, les indicateurs clés et l'usage final de la donnée (analyse ou ML).</div>
+              </div>
+            </div>
+
+            <div class="proc-item">
+              <div class="proc-num">2</div>
+              <div class="proc-body">
+                <div class="proc-title">Exploration des données</div>
+                <div class="proc-desc">Examiner la structure, détecter valeurs manquantes / aberrantes et sélectionner les variables pertinentes.</div>
+              </div>
+            </div>
+
+            <div class="proc-item">
+              <div class="proc-num">3</div>
+              <div class="proc-body">
+                <div class="proc-title">Nettoyage &amp; transformation</div>
+                <div class="proc-desc">Traiter les manquants, corriger les incohérences, normaliser et transformer via Python, PySpark ou SQL.</div>
+              </div>
+            </div>
+
+            <div class="proc-item">
+              <div class="proc-num">4</div>
+              <div class="proc-body">
+                <div class="proc-title">Validation &amp; modélisation</div>
+                <div class="proc-desc">Garantir des données fiables, puis passer à la visualisation, l'analyse ou l'entraînement des modèles.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Centres d'intérêt -->
+          <h3 class="sub-title" style="margin-top:14px;margin-bottom:14px;">Centres d'intérêt</h3>
+          <div class="interests">
+            <span class="interest-chip">Veille IA &amp; MLOps</span>
+            <span class="interest-chip">Compétitions Kaggle</span>
+            <span class="interest-chip">Open source</span>
+            <span class="interest-chip">Tech for Africa</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="footer-logo">SS</div>
+      <span class="footer-copy">© 2026 Stéphane Sando - Big Data &amp; ML</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/stephane-sando" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://github.com/StephaneSando"       target="_blank" rel="noopener" class="footer-link">GitHub</a>
+      <a href="mailto:stephanesando@gmail.com"                                         class="footer-link">Email</a>
+    </div>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

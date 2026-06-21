@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stéphane Sando - Big Data &amp; Machine Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-bg">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">SS</div>
+      <div>
+        <span class="nav-logo-name">Stéphane Sando</span>
+        <span class="nav-logo-sub">Big Data &amp; ML</span>
+      </div>
+    </a>
+    <div class="nav-links d-none d-lg-flex">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="about.html"      class="nav-link">À propos</a>
+      <a href="experience.html" class="nav-link">Expérience</a>
+      <a href="projects.html"   class="nav-link">Projets</a>
+      <a href="skills.html"     class="nav-link">Compétences</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-status d-none d-lg-flex"><span class="status-dot"></span>Disponible</div>
+      <a href="contact.html" class="btn-nav-contact">Me contacter</a>
+      <button class="burger d-flex d-lg-none" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <a href="index.html"      class="nav-link">Accueil</a>
+    <a href="about.html"      class="nav-link">À propos</a>
+    <a href="experience.html" class="nav-link">Expérience</a>
+    <a href="projects.html"   class="nav-link">Projets</a>
+    <a href="skills.html"     class="nav-link">Compétences</a>
+    <a href="contact.html"    class="nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Me contacter</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-wrapper">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Ouvert aux opportunités - Stage / Alternance 2026
+      </div>
+      <h1 class="hero-title">Stéphane <span class="hero-title-accent">Sando</span></h1>
+      <p class="hero-desc">En M1 ingénieur à l'EFREI, spécialisé Big Data &amp; ML. Ce qui me plaît : comprendre ce que les données cachent vraiment, puis construire quelque chose qui tient en dehors du notebook.</p>
+      <div class="hero-ctas">
+        <a href="projects.html" class="btn btn-primary">Découvrir mes projets →</a>
+        <a href="contact.html"  class="btn btn-secondary">Me contacter</a>
+      </div>
+
+      <!-- Terminal -->
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot" style="background:#ff5f57;"></span>
+          <span class="terminal-dot" style="background:#febc2e;"></span>
+          <span class="terminal-dot" style="background:#28c840;"></span>
+          <span class="terminal-title">stephane@efrei: ~/profile</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-comment">$ whoami</div>
+          <div class="t-output">stephane_sando - <span class="t-accent">M1 Big Data &amp; ML</span></div>
+          <div class="t-comment t-gap">$ cat stack.txt</div>
+          <div class="t-output">Python · PySpark · TensorFlow · XGBoost</div>
+          <div class="t-comment t-gap">$ status --availability</div>
+          <div class="t-cool">&gt; disponible juil. 2026 (stage) / sept. 2026 (alt.)<span class="t-cursor"></span></div>
+        </div>
+      </div>
+
+      <!-- Stats — Bootstrap grid : 2 col mobile, 4 col md+ -->
+      <div class="row g-3 justify-content-center mt-4">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-value">06</div>
+            <div class="stat-label">PROJETS ML &amp; DATA</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-value accent">0.799</div>
+            <div class="stat-label">AUC (MEILLEUR ML)</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-value cool">25M+</div>
+            <div class="stat-label">LIGNES TRAITÉES</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <a href="https://www.credly.com/badges/1e7e491c-f587-4750-8073-9c41e4e799e8/linked_in_profile" target="_blank" rel="noopener" class="stat-item" style="text-decoration:none;">
+            <div class="stat-value">AI-900</div>
+            <div class="stat-label">CERTIFIÉ AZURE</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS PREVIEW -->
+  <div class="container">
+    <div class="preview-header">
+      <h2 class="preview-title">Projets phares</h2>
+      <a href="projects.html" class="btn-ghost">Tous les projets →</a>
+    </div>
+
+    <!-- Bootstrap grid : 1 col mobile, 2 col md, 3 col lg -->
+    <div class="row g-4">
+
+      <!-- Pipeline ETL Hadoop/Spark -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="projects.html#etl-hadoop" class="project-card h-100">
+          <div class="project-card-thumb">
+            <div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,rgba(52,209,201,.22),transparent 62%);"></div>
+            <span class="thumb-cat" style="background:#34D1C9;">Big Data</span>
+            <img src="img/projects/etl-hadoop-1.png" alt="Pipeline ETL Hadoop/Spark" class="thumb-img">
+          </div>
+          <div class="card-row">
+            <h3 class="card-title">Pipeline ETL Hadoop/Spark</h3>
+            <span class="card-metric" style="color:#34D1C9;">25M+ ratings</span>
+          </div>
+          <p class="card-desc">Pipeline ETL distribué sur 25M+ de notes MovieLens, architecture Medallion bronze/silver/gold.</p>
+          <div class="card-tags">
+            <span class="tag">PySpark</span>
+            <span class="tag">Hive</span>
+            <span class="tag">HDFS</span>
+          </div>
+          <span class="card-cta">Voir le projet →</span>
+        </a>
+      </div>
+
+      <!-- Classification Qualité du Vin -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="projects.html#vin" class="project-card h-100">
+          <div class="project-card-thumb">
+            <div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,rgba(246,169,59,.22),transparent 62%);"></div>
+            <span class="thumb-cat" style="background:#F6A93B;">Machine Learning</span>
+            <img src="img/projects/vin-1.png" alt="Classification Qualité du Vin" class="thumb-img">
+          </div>
+          <div class="card-row">
+            <h3 class="card-title">Classification Qualité du Vin</h3>
+            <span class="card-metric" style="color:#F6A93B;">AUC 0.799</span>
+          </div>
+          <p class="card-desc">Classification binaire sur 6 497 échantillons UCI - 5 algorithmes testés, cycle ML complet.</p>
+          <div class="card-tags">
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Python</span>
+            <span class="tag">GridSearchCV</span>
+          </div>
+          <span class="card-cta">Voir le projet →</span>
+        </a>
+      </div>
+
+      <!-- Dashboard Streamlit -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="projects.html#streamlit" class="project-card h-100">
+          <div class="project-card-thumb">
+            <div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,rgba(52,209,201,.22),transparent 62%);"></div>
+            <span class="thumb-cat" style="background:#34D1C9;">Data Analytics</span>
+            <img src="img/projects/streamlit.png" alt="Dashboard Énergies Renouvelables" class="thumb-img">
+          </div>
+          <div class="card-row">
+            <h3 class="card-title">Dashboard Énergies Renouvelables</h3>
+            <span class="card-metric" style="color:#34D1C9;">Streamlit · Plotly</span>
+          </div>
+          <p class="card-desc">App interactive pour explorer la production d'énergies renouvelables en France par région et filière.</p>
+          <div class="card-tags">
+            <span class="tag">Streamlit</span>
+            <span class="tag">Plotly</span>
+            <span class="tag">Pandas</span>
+          </div>
+          <span class="card-cta">Voir le projet →</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-banner-glow"></div>
+      <h2>Un stage ou une alternance à pourvoir ?</h2>
+      <p>Disponible dès juillet 2026 pour un stage (4-6 mois), ou dès septembre pour une alternance. Je réponds sous 24h.</p>
+      <a href="contact.html" class="btn btn-primary" style="position:relative;">Prendre contact →</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="footer-logo">SS</div>
+      <span class="footer-copy">© 2026 Stéphane Sando - Big Data &amp; ML</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/stephane-sando" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://github.com/StephaneSando"       target="_blank" rel="noopener" class="footer-link">GitHub</a>
+      <a href="mailto:stephanesando@gmail.com"                                         class="footer-link">Email</a>
+    </div>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

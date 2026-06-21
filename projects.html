@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets - Stéphane Sando</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page-bg">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">SS</div>
+      <div>
+        <span class="nav-logo-name">Stéphane Sando</span>
+        <span class="nav-logo-sub">Big Data &amp; ML</span>
+      </div>
+    </a>
+    <div class="nav-links d-none d-lg-flex">
+      <a href="index.html"      class="nav-link">Accueil</a>
+      <a href="about.html"      class="nav-link">À propos</a>
+      <a href="experience.html" class="nav-link">Expérience</a>
+      <a href="projects.html"   class="nav-link">Projets</a>
+      <a href="skills.html"     class="nav-link">Compétences</a>
+      <a href="contact.html"    class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <div class="nav-status d-none d-lg-flex"><span class="status-dot"></span>Disponible</div>
+      <a href="contact.html" class="btn-nav-contact">Me contacter</a>
+      <button class="burger d-flex d-lg-none" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu">
+    <a href="index.html"      class="nav-link">Accueil</a>
+    <a href="about.html"      class="nav-link">À propos</a>
+    <a href="experience.html" class="nav-link">Expérience</a>
+    <a href="projects.html"   class="nav-link">Projets</a>
+    <a href="skills.html"     class="nav-link">Compétences</a>
+    <a href="contact.html"    class="nav-link">Contact</a>
+    <a href="contact.html" class="btn btn-primary" style="margin-top:24px;">Me contacter</a>
+  </div>
+
+  <!-- GRID VIEW -->
+  <div id="grid-view" class="container section-pad">
+    <div class="section-label">// Réalisations</div>
+    <h1 class="section-title">Mes projets</h1>
+    <p class="section-desc">Six projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
+
+    <!-- Filters -->
+    <div class="filters" id="filters"></div>
+
+    <!-- Bootstrap row — les cartes sont injectées par JS dans des .col-* -->
+    <div class="row g-4" id="projects-grid"></div>
+  </div>
+
+  <!-- DETAIL VIEW -->
+  <div id="detail-view" class="container-sm section-pad" style="display:none;">
+    <button class="detail-back" id="back-btn">← Tous les projets</button>
+    <div class="detail-badges" id="detail-badges"></div>
+    <h1 class="detail-title" id="detail-title"></h1>
+    <div class="detail-thumb" id="detail-thumb">
+      <div id="detail-thumb-glow" style="position:absolute;inset:0;pointer-events:none;"></div>
+    </div>
+    <div id="detail-img-caption"></div>
+    <div id="detail-gallery-strip"></div>
+
+    <!-- Bootstrap grid : contenu 8 col / sidebar 4 col à partir de lg -->
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-8">
+        <h3 class="detail-h3">Explication</h3>
+        <div id="detail-long"></div>
+        <h3 class="detail-h3" style="margin-top:24px;">Stack technique</h3>
+        <div class="detail-tech-tags" id="detail-tech"></div>
+        <h3 class="detail-h3" style="margin-top:0;">Rapport détaillé</h3>
+        <div class="detail-sections" id="detail-sections"></div>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="detail-results-card">
+          <div class="detail-results-label">RÉSULTATS</div>
+          <div id="detail-results"></div>
+        </div>
+        <a href="https://github.com/StephaneSando" target="_blank" rel="noopener" class="detail-github">›_ Voir le code sur GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <div class="footer-logo">SS</div>
+      <span class="footer-copy">© 2026 Stéphane Sando - Big Data &amp; ML</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/stephane-sando" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+      <a href="https://github.com/StephaneSando"       target="_blank" rel="noopener" class="footer-link">GitHub</a>
+      <a href="mailto:stephanesando@gmail.com"                                         class="footer-link">Email</a>
+    </div>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+<script>
+var ACCENT = '#F6A93B';
+var COOL   = '#34D1C9';
+
+var PROJECTS = [
+  {
+    id: 'etl-hadoop',
+    title: 'Pipeline ETL Hadoop/Spark',
+    cat: 'Big Data',
+    cats: ['Big Data'],
+    tint: COOL,
+    desc: "Pipeline ETL distribué sur 25M+ de notes MovieLens, architecture Medallion bronze/silver/gold avec PySpark et Hive.",
+    tech: ['PySpark', 'HDFS', 'Apache Hive', 'Spark SQL', 'HiveQL', 'Linux CLI'],
+    metric: '25M+ ratings traités',
+    long: [
+      "25 millions de notes, 162 541 utilisateurs, 62 423 films sur 24 ans (1995-2019). L'objectif : rendre cette masse exploitable via un pipeline ETL distribué industrialisé.",
+      "J'ai suivi l'architecture Medallion - raw pour l'ingestion brute avec validation de schéma, silver pour les transformations (métadonnées films, notes agrégées, genres explosés en lignes individuelles), résultats pour les exports analytiques. Requêtes type : meilleur film par an, meilleur film par genre, comparaison Spark vs Hive pour valider la cohérence. Trois scripts automatisent le tout : spark-etl.py, spark-analysis.py, hive-etl.hql."
+    ],
+    results: [{ k:'Volume', v:'25M+ notes' }, { k:'Utilisateurs', v:'162 541' }, { k:'Films', v:'62 423' }, { k:'Architecture', v:'Bronze · Silver · Gold' }],
+    imgs: ['etl-hadoop-1.png', 'etl-hadoop-2.png', 'etl-hadoop-3.png', 'etl-hadoop-4.png'],
+    captions: ['DataFrame Silver — films, genres et notes agrégées (25M+ ratings)', 'Requêtes Spark SQL — meilleur film par an et par genre', 'Résultats Hive — classement des films par note moyenne', 'Script HiveQL — création de la table SILVER (format Parquet)'],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Démontrer la maîtrise du traitement distribué batch avec Spark et Hive sur un dataset réel de grande taille. Le dataset MovieLens ml-25m couvre 24 ans de notations cinéma." },
+      { title: 'Dataset MovieLens ml-25m', body: "Fichiers CSV : ratings.csv (25M lignes), movies.csv (62 423 films), tags.csv. Chargés depuis HDFS dans des DataFrames Spark avec inférence de schéma et cast de types." },
+      { title: 'Architecture HDFS', body: "Quatre zones : raw/ (données brutes), raw_hive/ (zone Hive), silver/ (dataset transformé prêt à l'analyse), results/ (exports finaux). Séparation claire entre couches d'ingestion et couches analytiques." },
+      { title: 'ETL Spark', body: "Extract : lecture CSV depuis HDFS. Transform : silver dataset avec ID film, nom, année extraite du titre, notes agrégées (count, moyenne), genres explosés (un genre = une ligne). Load : export CSV vers HDFS silver/." },
+      { title: 'Analyses SQL', body: "Quatre requêtes : meilleur film par an, par genre, meilleur Action par an, meilleur Romance par an. ROW_NUMBER() avec PARTITION BY et ORDER BY moyenne DESC, count DESC, ID ASC. Résultats Spark SQL et HiveQL identiques - cohérence validée." },
+      { title: 'Conclusion', body: "Ce projet m'a fait comprendre concrètement ce que 'distribué' signifie en pratique. La complémentarité Spark (traitement in-memory) et Hive (gouvernance et SQL) est au coeur des architectures Big Data en production." }
+    ]
+  },
+  {
+    id: 'vin',
+    title: 'Classification Qualité du Vin',
+    cat: 'Machine Learning',
+    cats: ['Machine Learning'],
+    tint: ACCENT,
+    desc: "Classification binaire de la qualité du vin sur 6 497 échantillons UCI - 5 algorithmes testés, cycle ML complet.",
+    tech: ['Python', 'Scikit-learn', 'Pandas', 'Matplotlib', 'GridSearchCV'],
+    metric: 'AUC 0.799 (k-NN)',
+    long: [
+      "6 497 vins, 11 variables physico-chimiques - acidité, alcool, pH, sulfites, densité, sucre résiduel. L'objectif : prédire automatiquement la qualité sans avoir besoin d'un expert, à partir de mesures objectives.",
+      "J'ai reformulé le problème en classification binaire (qualité ≥7 = bon vin, classe 1), géré le déséquilibre 80/20 avec stratification, testé 5 algorithmes différents et optimisé avec GridSearchCV. L'arbre de décision a été retenu au final - pas pour son AUC (0.771), mais pour son recall sur la classe minoritaire : c'est lui qui rate le moins de bons vins."
+    ],
+    results: [{ k:'Meilleur AUC', v:'0.799 (k-NN)' }, { k:'Modèle retenu', v:'Decision Tree' }, { k:'Dataset', v:'6 497 vins (UCI)' }, { k:'Split', v:'80% train / 20% test' }],
+    imgs: ['vin-1.png', 'vin-2.png'],
+    captions: ['Matrice de corrélation — variables physico-chimiques vs qualité', 'Courbes ROC des 5 modèles — KNN meilleur AUC (0.799)'],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Remplacer l'évaluation subjective des experts par un modèle prédictif basé sur des mesures physico-chimiques. Dataset Wine Quality UCI - vins rouges et blancs, notes de 0 à 10." },
+      { title: 'Reformulation du problème', body: "Score 1 à 10 trop fragmenté. Reformulation binaire : classe 0 (qualité <7) et classe 1 (qualité ≥7). Déséquilibre détecté : ~80% classe 0, ~20% classe 1 - pris en compte par stratification." },
+      { title: 'Prétraitement', body: "Données complètes - aucune valeur manquante. Traitement des outliers par capping. Corrélations clés : alcohol, volatile acidity, density, chlorides. Standardisation avant modélisation." },
+      { title: 'Modèles testés', body: "Régression Logistique (AUC 0.790), k-NN (AUC 0.799), Arbre de Décision (AUC 0.771), Naive Bayes (AUC 0.755), SVM linéaire et RBF (AUC 0.730). Validation k-fold cross-validation." },
+      { title: 'Résultats et choix du modèle', body: "k-NN meilleur AUC (0.799), mais l'arbre de décision est retenu pour son recall supérieur sur la classe minoritaire - il détecte mieux les bons vins. Optimisation GridSearchCV. Métriques : Accuracy, Precision, Recall, F1, AUC-ROC." },
+      { title: 'Conclusion', body: "Cycle ML complet couvert. Point clé : l'AUC maximale n'est pas toujours le bon critère - ça dépend du coût métier de chaque type d'erreur. Savoir justifier son choix de modèle, c'est aussi important que de l'entraîner." }
+    ]
+  },
+  {
+    id: 'immo',
+    title: 'Système Gestion Immobilière',
+    cat: 'Data Engineering',
+    cats: ['Data Engineering'],
+    tint: COOL,
+    desc: "Architecture multi-paradigme : SQL/PL-SQL (Oracle), MongoDB et Neo4j pour gérer biens, clients et transactions.",
+    tech: ['Oracle DB', 'PL/SQL', 'MongoDB', 'Neo4j', 'SQL', 'Cypher'],
+    metric: 'SQL · NoSQL · Graphe',
+    long: [
+      "Un système de gestion de biens immobiliers de luxe - propriétaires, clients, visites, transactions, commissions. Le vrai enjeu du projet : couvrir les trois grands paradigmes de base de données dans une même architecture cohérente.",
+      "Relationnel normalisé en 6NF sous Oracle DB pour les données de référence, triggers PL/SQL pour automatiser les règles métier (calcul de commissions, gestion des statuts FOR_SALE vers SOLD, audit des actions), collections MongoDB pour les profils et feedbacks avec JSON Schema, et Neo4j pour visualiser les réseaux de relation client-propriété en Cypher."
+    ],
+    results: [{ k:'Paradigmes', v:'SQL · NoSQL · Graphe' }, { k:'BDD', v:'Oracle · MongoDB · Neo4j' }, { k:'Normalisation', v:'6NF' }, { k:'Logique métier', v:'Triggers PL/SQL' }],
+    imgs: ['immo-1.png', 'immo-2.png', 'immo-3.png'],
+    captions: ['Diagramme Entité-Relation Oracle DB — 7 entités, relations PK/FK', 'Requêtes Oracle SQL — transactions avec calcul automatique des commissions', 'Graphe Neo4j — relations client-propriété (visite, transaction, parrainage)'],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Concevoir un système complet de gestion immobilière de luxe capable de gérer propriétés, propriétaires, clients, visites, transactions et commissions - avec analyse des performances." },
+      { title: 'Architecture relationnelle (SQL/Oracle)', body: "Modèle normalisé en 6NF. Entités : Owner, Client, Property, Room, Facility, Tour, Transaction, Interaction. Contraintes PK/FK, UNIQUE, NOT NULL, CHECK. Modèle E/R complet avant implémentation." },
+      { title: 'Automatisation PL/SQL', body: "Triggers et packages : calcul automatique des commissions (commission_base + montant_total * pourcentage / 100), validation des montants, cycle de vie propriété (FOR_SALE vers SOLD), cohérence visite-transaction, audit des actions." },
+      { title: 'Extension MongoDB', body: "Collections property_profiles et client_feedback avec validation JSON Schema et index composites. Stockage de documents flexibles complémentaires aux données relationnelles." },
+      { title: 'Graphe Neo4j', body: "Modélisation des relations client-propriété, conversion visite vers vente, réseaux de parrainage. Requêtes Cypher pour identifier les clients les plus connectés et analyser les chemins de référence." },
+      { title: 'Conclusion', body: "Ce projet m'a appris à choisir le bon paradigme selon le besoin : SQL pour les relations et la cohérence, MongoDB pour la flexibilité documentaire, Neo4j pour les données connectées. Trois outils, trois forces distinctes." }
+    ]
+  },
+  {
+    id: 'factorial',
+    title: 'Analyse Factorielle Jeux Vidéo',
+    cat: 'Data Analytics',
+    cats: ['Data Analytics'],
+    tint: ACCENT,
+    desc: "ACP, AFC et ACM appliquées aux ventes de jeux vidéo pour révéler les structures cachées entre consoles, éditeurs et genres.",
+    tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn', 'Jupyter'],
+    metric: 'ACP · AFC · ACM',
+    long: [
+      "Un dataset de ventes de jeux vidéo multi-régions (NA, PAL, Japon) avec scores Metacritic, scores joueurs, éditeurs, plateformes (PS3/PS4/PS5) et genres. L'objectif : appliquer les trois méthodes d'analyse factorielle et comprendre ce que chacune révèle que les autres ne montrent pas.",
+      "ACP sur les variables numériques : deux axes principaux - volume de ventes (axe 1) et qualité perçue (axe 2), quasi indépendants. AFC sur les tableaux de contingence : chaque éditeur cible des générations de consoles différentes, et sa réputation qualité suit. ACM sur les variables qualitatives : certains genres sont plateformes-dépendants, d'autres sont vraiment généralistes."
+    ],
+    results: [{ k:'Méthodes', v:'ACP · AFC · ACM' }, { k:'Consoles', v:'PS3 · PS4 · PS5' }, { k:'Variables', v:'Ventes · Scores · Genres · Éditeurs' }],
+    imgs: ['factorial-1.png', 'factorial-2.png', 'factorial-3.png'],
+    captions: ['AFC — plan factoriel Console / Éditeur (PS3, PS4, PS5)', 'ACP Biplot — PC1 (50%) axe ventes, PC2 (15%) axe qualité', 'ACM Biplot — individus et modalités (consoles et plateformes)'],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Appliquer les trois grandes méthodes d'analyse factorielle à un dataset réel pour comprendre les structures latentes : comment ventes, scores, éditeurs et plateformes s'organisent entre eux." },
+      { title: 'Dataset', body: "Variables : console (PS3/PS4/PS5), éditeur, ventes par région (NA, PAL, Japon, autres, total), scores Metacritic et joueurs, votes, genre, plateforme. Nettoyage et standardisation selon la méthode appliquée." },
+      { title: 'ACP - Composantes Principales', body: "Appliquée aux variables numériques (ventes et scores). Axe 1 = performance commerciale, Axe 2 = qualité/évaluation. Résultat : volume commercial et appréciation du public sont deux dimensions indépendantes." },
+      { title: 'AFC - Correspondances Factorielles', body: "Tableaux console-éditeur et éditeur-score. Résultat : les éditeurs ne ciblent pas les mêmes générations de consoles, et leur réputation qualité est cohérente entre plateformes." },
+      { title: 'ACM - Correspondances Multiples', body: "Appliquée aux variables qualitatives (genre, plateforme, segment). Certains genres sont fortement plateforme-dépendants (exclusivités), d'autres sont généralistes. Profils de jeux distincts émergent." },
+      { title: 'Conclusion', body: "L'analyse factorielle révèle des structures invisibles aux statistiques descriptives classiques. Choisir la bonne méthode (ACP pour le numérique, AFC pour les tableaux croisés, ACM pour le qualitatif) est une compétence à part entière." }
+    ]
+  },
+  {
+    id: 'streamlit',
+    title: 'Dashboard Énergies Renouvelables',
+    cat: 'Data Analytics',
+    cats: ['Data Analytics'],
+    tint: COOL,
+    desc: "App Streamlit pour explorer la production d'énergies renouvelables en France par région, filière et période.",
+    tech: ['Python', 'Streamlit', 'Plotly', 'Pandas', 'NumPy'],
+    metric: '5 pages · Carte interactive',
+    long: [
+      "Dataset open data France : production d'énergies renouvelables structurée par année, région et filière (hydraulique, éolien, solaire, bioénergies, gaz renouvelable) avec coordonnées géographiques. L'objectif : construire une app qui permet vraiment d'explorer les données, pas juste de les afficher.",
+      "5 pages thématiques - Problème, Analyse, Insights, Implications, Données. Filtres dynamiques par année, région et type d'énergie. Visualisations : KPIs, graphiques en barres, graphiques en aires, heatmap de corrélations entre filières, carte interactive à bulles proportionnelles par région. Export CSV intégré."
+    ],
+    results: [{ k:'Pages', v:'5 thématiques' }, { k:'Filières', v:'Hydraulique · Éolien · Solaire · Biogaz' }, { k:'Visualisations', v:'KPIs · Aires · Heatmap · Carte' }, { k:'Source', v:'Open Data France' }],
+    imgs: ['streamlit.png'],
+    captions: ['KPIs, production totale par région (barres) et évolution par filière (aires)'],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Identifier les régions leaders en production renouvelable, analyser la progression des filières et comprendre l'évolution temporelle - via une interface interactive sans code pour l'utilisateur final." },
+      { title: 'Données', body: "Dataset open data structuré par année et région. Variables : production par filière (hydraulique, éolien, solaire, bioénergies, gaz renouvelable), coordonnées géographiques pour la cartographie Plotly." },
+      { title: 'Nettoyage - Transformation', body: "Suppression des doublons, nettoyage des colonnes, conversion des données de production en numériques, extraction des coordonnées géographiques pour la couche cartographique." },
+      { title: 'Architecture Streamlit', body: "5 pages thématiques : Problème (contexte et enjeux), Analyse (exploration filtrée), Insights (conclusions clés), Implications (recommandations), Données (tableau brut). Navigation sidebar, filtres dynamiques interconnectés." },
+      { title: 'Visualisations', body: "KPIs numériques (production totale, top région, top filière). Barres groupées par région. Aires temporelles par filière. Heatmap Plotly des corrélations entre filières. Carte à bulles proportionnelles par région. Export CSV du tableau filtré." },
+      { title: 'Conclusion', body: "Ce projet m'a appris à concevoir une application data de bout en bout. Streamlit permet de livrer rapidement un produit utilisable - mais le vrai travail est dans la préparation des données et le choix des visualisations selon le message à communiquer." }
+    ]
+  },
+  {
+    id: 'powerbi',
+    title: 'Dashboard Power BI - Ventes',
+    cat: 'Data Analytics',
+    cats: ['Data Analytics'],
+    tint: ACCENT,
+    desc: "Analyse des ventes et performances fabricants en modèle étoile - DAX, Power Query, KPIs actionnables.",
+    tech: ['Power BI', 'Power Query', 'DAX', 'Modélisation en étoile'],
+    metric: 'Star Schema · DAX',
+    long: [
+      "Analyser les performances commerciales d'une entreprise multi-produits sur plusieurs pays et segments de marché. L'enjeu : passer de données brutes dispersées à un dashboard décisionnel que des équipes business peuvent utiliser sans formation.",
+      "Modélisation en étoile : une table de faits Sales (CA, unités, date, produit, géographie) et quatre dimensions (Produit avec catégorie/segment/MSRP, Fabricant, Géographie jusqu'à la ville, Date). Power Query pour toutes les transformations. Mesures DAX : CA total, CA année précédente, taux de croissance %, top contributeurs."
+    ],
+    results: [{ k:'Architecture', v:'Modèle en étoile' }, { k:'Dimensions', v:'Produit · Fabricant · Géo · Date' }, { k:'Mesures DAX', v:'CA · Croissance · Comparatif N-1' }, { k:'Filtres', v:'Année · Fabricant · Catégorie' }],
+    imgs: ['powerbi-1.png', 'powerbi-2.png'],
+    captions: ['Modèle en étoile Power BI — Sales, Product, Manufacturer, Geography, Date', 'Dashboard Manufacturer Analysis — CA par pays et évolution 2012-2019'],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Construire un outil de pilotage commercial pour suivre le CA, les unités vendues, comparer les performances par pays/catégorie/segment et analyser la croissance. Cible : équipes business, marketing et management." },
+      { title: 'Modélisation des données', body: "Schéma en étoile. Table de faits Sales : Revenue, Units, Date, ProductID, GeographyID. Dimensions : Product (catégorie, segment, MSRP, fabricant), Manufacturer, Geography (pays, région, état, ville), Date. Relations 1-N." },
+      { title: 'Power Query - Transformations', body: "Typage et normalisation des colonnes, suppression des lignes/colonnes inutiles, création de colonnes conditionnelles, splits. Toutes les transformations documentées et rejouables." },
+      { title: 'Mesures DAX', body: "CA Total, CA Année Précédente (SAMEPERIODLASTYEAR), Taux de croissance %, Unités vendues, Contribution par segment. Utilisation de CALCULATE, FILTER, DIVIDE pour les mesures avancées." },
+      { title: 'Visualisations et KPIs', body: "KPIs en haut : CA total, CA N-1, taux de croissance. CA par pays (carte + barres). CA par catégorie (Urban, Rural, Convenience). Contribution par segment. Évolution annuelle. Comparatif CA vs croissance (axe double). Filtres : année, fabricant, catégorie." },
+      { title: 'Conclusion', body: "La différence entre un rapport Power BI et un vrai outil décisionnel, c'est la modélisation en étoile et les mesures DAX - sans elles, les filtres croisés ne fonctionnent pas correctement. Ce projet m'a donné une base solide en BI d'entreprise." }
+    ]
+  }
+];
+
+var CATS = ['Tous', 'Machine Learning', 'Big Data', 'Data Analytics', 'Data Engineering'];
+var currentFilter = 'Tous';
+
+function rgba22(hex) {
+  var r = parseInt(hex.slice(1,3),16);
+  var g = parseInt(hex.slice(3,5),16);
+  var b = parseInt(hex.slice(5,7),16);
+  return 'rgba(' + r + ',' + g + ',' + b + ',0.22)';
+}
+
+function renderFilters() {
+  var container = document.getElementById('filters');
+  container.innerHTML = '';
+  CATS.forEach(function (cat) {
+    var btn = document.createElement('button');
+    btn.className = 'filter-btn' + (cat === currentFilter ? ' active' : '');
+    btn.textContent = cat;
+    btn.addEventListener('click', function () {
+      currentFilter = cat;
+      renderFilters();
+      renderGrid();
+    });
+    container.appendChild(btn);
+  });
+}
+
+function renderGrid() {
+  var grid = document.getElementById('projects-grid');
+  grid.innerHTML = '';
+  var shown = PROJECTS.filter(function (p) {
+    return currentFilter === 'Tous' || p.cats.indexOf(currentFilter) >= 0;
+  });
+  if (shown.length === 0) {
+    grid.innerHTML = '<p style="color:#76736c;font-family:\'JetBrains Mono\',monospace;font-size:14px;">Aucun projet dans cette catégorie.</p>';
+    return;
+  }
+  shown.forEach(function (p) {
+    var card = document.createElement('div');
+    card.className = 'project-card fade-in h-100';
+    card.innerHTML =
+      '<div class="project-card-thumb">' +
+        '<div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,' + rgba22(p.tint) + ',transparent 62%);"></div>' +
+        '<span class="thumb-cat" style="background:' + p.tint + ';">' + p.cat + '</span>' +
+        (p.imgs && p.imgs.length > 0
+          ? '<img src="img/projects/' + p.imgs[0] + '" alt="' + p.title + '" class="thumb-img">'
+          : '<span class="thumb-placeholder">capture à venir</span>') +
+      '</div>' +
+      '<div class="card-row">' +
+        '<h3 class="card-title">' + p.title + '</h3>' +
+        '<span class="card-metric" style="color:' + p.tint + ';">' + p.metric + '</span>' +
+      '</div>' +
+      '<p class="card-desc">' + p.desc + '</p>' +
+      '<div class="card-tags">' + p.tech.map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('') + '</div>' +
+      '<span class="card-cta">Voir le projet →</span>';
+    card.addEventListener('click', function () { openDetail(p.id); });
+
+    /* Enveloppe Bootstrap col */
+    var col = document.createElement('div');
+    col.className = 'col-12 col-md-6 col-xl-4';
+    col.appendChild(card);
+    grid.appendChild(col);
+  });
+}
+
+function openDetail(id) {
+  var p = PROJECTS.find(function(x){ return x.id === id; });
+  if (!p) return;
+
+  document.getElementById('detail-badges').innerHTML =
+    '<span class="detail-cat-badge" style="background:' + p.tint + ';">' + p.cat + '</span>' +
+    '<span class="detail-metric" style="color:' + p.tint + ';">' + p.metric + '</span>';
+
+  document.getElementById('detail-title').textContent = p.title;
+  document.getElementById('detail-thumb-glow').style.background =
+    'radial-gradient(circle at 70% 25%,' + rgba22(p.tint) + ',transparent 62%)';
+
+  var thumbEl   = document.getElementById('detail-thumb');
+  var captionEl = document.getElementById('detail-img-caption');
+  var stripEl   = document.getElementById('detail-gallery-strip');
+  var prevImg   = thumbEl.querySelector('.detail-gallery-img');
+  if (prevImg) thumbEl.removeChild(prevImg);
+  captionEl.textContent = '';
+  stripEl.innerHTML = '';
+
+  if (p.imgs && p.imgs.length > 0) {
+    var mainImg = document.createElement('img');
+    mainImg.src = 'img/projects/' + p.imgs[0];
+    mainImg.alt = p.title;
+    mainImg.className = 'detail-gallery-img';
+    thumbEl.appendChild(mainImg);
+
+    if (p.captions && p.captions[0]) captionEl.textContent = p.captions[0];
+
+    if (p.imgs.length > 1) {
+      p.imgs.forEach(function(name, i) {
+        var tn = document.createElement('img');
+        tn.src = 'img/projects/' + name;
+        tn.alt = p.captions && p.captions[i] ? p.captions[i] : p.title + ' ' + (i + 1);
+        tn.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+        tn.addEventListener('click', (function(capturedTn, idx) {
+          return function() {
+            mainImg.src = capturedTn.src;
+            if (p.captions && p.captions[idx]) captionEl.textContent = p.captions[idx];
+            stripEl.querySelectorAll('.gallery-thumb').forEach(function(t){ t.classList.remove('active'); });
+            capturedTn.classList.add('active');
+          };
+        })(tn, i));
+        stripEl.appendChild(tn);
+      });
+    }
+  }
+
+  document.getElementById('detail-long').innerHTML =
+    p.long.map(function(para){ return '<p class="detail-para">' + para + '</p>'; }).join('');
+
+  document.getElementById('detail-tech').innerHTML =
+    p.tech.map(function(t){ return '<span class="detail-tech-tag">' + t + '</span>'; }).join('');
+
+  document.getElementById('detail-sections').innerHTML =
+    p.sections.map(function(sec){
+      return '<div class="detail-sec-card">' +
+        '<h4 style="color:' + p.tint + ';">' + sec.title + '</h4>' +
+        '<p>' + sec.body + '</p>' +
+      '</div>';
+    }).join('');
+
+  document.getElementById('detail-results').innerHTML =
+    p.results.map(function(r){
+      return '<div class="detail-result-row">' +
+        '<span class="detail-result-k">' + r.k + '</span>' +
+        '<span class="detail-result-v" style="color:' + p.tint + ';">' + r.v + '</span>' +
+      '</div>';
+    }).join('');
+
+  document.getElementById('grid-view').style.display = 'none';
+  document.getElementById('detail-view').style.display = 'block';
+  window.location.hash = id;
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function closeDetail() {
+  document.getElementById('detail-view').style.display = 'none';
+  document.getElementById('grid-view').style.display = 'block';
+  history.pushState('', document.title, window.location.pathname + window.location.search);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+document.getElementById('back-btn').addEventListener('click', closeDetail);
+
+renderFilters();
+renderGrid();
+
+var hash = window.location.hash.slice(1);
+if (hash) openDetail(hash);
+</script>
+</body>
+</html>
