@@ -113,6 +113,43 @@ var COOL   = '#34D1C9';
 
 var PROJECTS = [
   {
+    id: 'plantes',
+    title: 'Classification Maladies des Plantes',
+    cat: 'Machine Learning',
+    cats: ['Machine Learning'],
+    tint: COOL,
+    desc: "Comparaison de 5 architectures deep learning (MLP, CNN, ResNet, Transfer Learning DenseNet121) pour détecter les maladies des plantes sur 4 000 images PlantVillage.",
+    tech: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Transfer Learning', 'DenseNet121', 'Scikit-learn'],
+    metric: '99% accuracy (DenseNet121)',
+    long: [
+      "4 000 images de feuilles de plantes (128×128 px), 10 classes représentant 5 plantes saines et malades : pomme, maïs, raisin, pomme de terre, tomate. L'objectif : automatiser la détection de maladies végétales sans expert agronome sur le terrain.",
+      "J'ai progressé par étapes en comparant 5 architectures. Le MLP dense s'effondre à 47% d'accuracy - sans surprise, les pixels aplatis ne capturent pas la spatialité. Le CNN simple bondit à 98%, le CNN régularisé redescend à 86% (meilleure généralisation). Le ResNet maison revient à 98% avec F1 de 0.98. Le transfer learning sur DenseNet121 pré-entraîné ImageNet atteint 99% en nettement moins d'époques - la preuve concrète que réutiliser des représentations déjà apprises change tout."
+    ],
+    results: [
+      { k:'MLP dense', v:'47% acc · F1 0.32' },
+      { k:'CNN simple', v:'98% acc · F1 0.96' },
+      { k:'CNN régularisé', v:'86% acc · F1 0.81' },
+      { k:'ResNet maison', v:'98% acc · F1 0.98' },
+      { k:'DenseNet121 (TL)', v:'99% acc · F1 0.97' }
+    ],
+    github: 'https://github.com/StephaneSando/Classification-de-plantes',
+    imgs: ['plantes-dataset.png', 'plantes-comparaison.png', 'plantes-distribution.png'],
+    captions: [
+      'Exemples de feuilles du dataset PlantVillage - plantes saines et malades (10 classes)',
+      'Accuracy et F1 macro des 5 architectures - DenseNet121 meilleur modele (0.99 / 0.97)',
+      'Distribution des 10 classes PlantVillage - desequilibre visible (Tomato Bacterial spot surrepresente)'
+    ],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Détecter automatiquement les maladies des plantes à partir de photographies de feuilles. Dataset PlantVillage : ~4 000 images, 10 classes, 5 espèces (pomme, maïs, raisin, pomme de terre, tomate) en version saine et malade. Split 70% entraînement / 15% validation / 15% test." },
+      { title: 'Baseline - MLP dense', body: "Réseau fully connected sur les pixels aplatis (128×128×3). Accuracy 47%, F1 macro 0.32. Montre les limites d'une approche non spatiale : un MLP ne capture pas les structures locales (textures, formes, taches) que les convolutions exploitent naturellement." },
+      { title: 'CNN simple', body: "Architecture Conv2D + MaxPooling + Dense. Accuracy 98%, F1 0.96 avec seulement quelques couches. Démontre que les convolutions capturent bien les patterns visuels de maladies : taches, décolorations, textures anormales des feuilles." },
+      { title: 'CNN régularisé', body: "Ajout de BatchNormalization, Dropout, ElasticNet et data augmentation (rotations, flips, zoom). Accuracy 86%, F1 0.81. Plus bas sur ce dataset mais nettement plus robuste aux données out-of-distribution - compromis biais/variance intentionnel." },
+      { title: 'ResNet maison', body: "Implémentation des skip connections résiduelles en Keras from scratch. Accuracy 98%, F1 0.98. Les connexions résiduelles permettent d'entraîner des réseaux plus profonds sans dégradation du gradient - concept fondateur du deep learning moderne, ici réimplémenté à la main." },
+      { title: 'Transfer Learning - DenseNet121', body: "Fine-tuning de DenseNet121 pré-entraîné sur ImageNet, couches de classification remplacées et adaptées aux 10 classes PlantVillage. Accuracy 99%, F1 0.97. EarlyStopping et ReduceLROnPlateau. Meilleure performance en moins d'époques que tous les modèles from scratch." },
+      { title: 'Conclusion', body: "La progression MLP vers CNN vers ResNet vers Transfer Learning illustre concrètement l'évolution du deep learning. Chaque saut d'architecture correspond à une insight réelle : spatialité, profondeur, réutilisation des représentations. Ce projet m'a donné une base solide en vision par ordinateur et apprentissage profond appliqué." }
+    ]
+  },
+  {
     id: 'etl-hadoop',
     title: 'Pipeline ETL Hadoop/Spark',
     cat: 'Big Data',
@@ -260,43 +297,6 @@ var PROJECTS = [
       { title: 'Mesures DAX', body: "CA Total, CA Année Précédente (SAMEPERIODLASTYEAR), Taux de croissance %, Unités vendues, Contribution par segment. Utilisation de CALCULATE, FILTER, DIVIDE pour les mesures avancées." },
       { title: 'Visualisations et KPIs', body: "KPIs en haut : CA total, CA N-1, taux de croissance. CA par pays (carte + barres). CA par catégorie (Urban, Rural, Convenience). Contribution par segment. Évolution annuelle. Comparatif CA vs croissance (axe double). Filtres : année, fabricant, catégorie." },
       { title: 'Conclusion', body: "La différence entre un rapport Power BI et un vrai outil décisionnel, c'est la modélisation en étoile et les mesures DAX - sans elles, les filtres croisés ne fonctionnent pas correctement. Ce projet m'a donné une base solide en BI d'entreprise." }
-    ]
-  },
-  {
-    id: 'plantes',
-    title: 'Classification Maladies des Plantes',
-    cat: 'Machine Learning',
-    cats: ['Machine Learning'],
-    tint: COOL,
-    desc: "Comparaison de 5 architectures deep learning (MLP, CNN, ResNet, Transfer Learning DenseNet121) pour détecter les maladies des plantes sur 4 000 images PlantVillage.",
-    tech: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Transfer Learning', 'DenseNet121', 'Scikit-learn'],
-    metric: '99% accuracy (DenseNet121)',
-    long: [
-      "4 000 images de feuilles de plantes (128×128 px), 10 classes représentant 5 plantes saines et malades : pomme, maïs, raisin, pomme de terre, tomate. L'objectif : automatiser la détection de maladies végétales sans expert agronome sur le terrain.",
-      "J'ai progressé par étapes en comparant 5 architectures. Le MLP dense s'effondre à 47% d'accuracy - sans surprise, les pixels aplatis ne capturent pas la spatialité. Le CNN simple bondit à 98%, le CNN régularisé redescend à 86% (meilleure généralisation). Le ResNet maison revient à 98% avec F1 de 0.98. Le transfer learning sur DenseNet121 pré-entraîné ImageNet atteint 99% en nettement moins d'époques - la preuve concrète que réutiliser des représentations déjà apprises change tout."
-    ],
-    results: [
-      { k:'MLP dense', v:'47% acc · F1 0.32' },
-      { k:'CNN simple', v:'98% acc · F1 0.96' },
-      { k:'CNN régularisé', v:'86% acc · F1 0.81' },
-      { k:'ResNet maison', v:'98% acc · F1 0.98' },
-      { k:'DenseNet121 (TL)', v:'99% acc · F1 0.97' }
-    ],
-    github: 'https://github.com/StephaneSando/Classification-de-plantes',
-    imgs: ['plantes-dataset.png', 'plantes-comparaison.png', 'plantes-distribution.png'],
-    captions: [
-      'Exemples de feuilles du dataset PlantVillage - plantes saines et malades (10 classes)',
-      'Accuracy et F1 macro des 5 architectures - DenseNet121 meilleur modele (0.99 / 0.97)',
-      'Distribution des 10 classes PlantVillage - desequilibre visible (Tomato Bacterial spot surrepresente)'
-    ],
-    sections: [
-      { title: 'Contexte - Objectif', body: "Détecter automatiquement les maladies des plantes à partir de photographies de feuilles. Dataset PlantVillage : ~4 000 images, 10 classes, 5 espèces (pomme, maïs, raisin, pomme de terre, tomate) en version saine et malade. Split 70% entraînement / 15% validation / 15% test." },
-      { title: 'Baseline - MLP dense', body: "Réseau fully connected sur les pixels aplatis (128×128×3). Accuracy 47%, F1 macro 0.32. Montre les limites d'une approche non spatiale : un MLP ne capture pas les structures locales (textures, formes, taches) que les convolutions exploitent naturellement." },
-      { title: 'CNN simple', body: "Architecture Conv2D + MaxPooling + Dense. Accuracy 98%, F1 0.96 avec seulement quelques couches. Démontre que les convolutions capturent bien les patterns visuels de maladies : taches, décolorations, textures anormales des feuilles." },
-      { title: 'CNN régularisé', body: "Ajout de BatchNormalization, Dropout, ElasticNet et data augmentation (rotations, flips, zoom). Accuracy 86%, F1 0.81. Plus bas sur ce dataset mais nettement plus robuste aux données out-of-distribution - compromis biais/variance intentionnel." },
-      { title: 'ResNet maison', body: "Implémentation des skip connections résiduelles en Keras from scratch. Accuracy 98%, F1 0.98. Les connexions résiduelles permettent d'entraîner des réseaux plus profonds sans dégradation du gradient - concept fondateur du deep learning moderne, ici réimplémenté à la main." },
-      { title: 'Transfer Learning - DenseNet121', body: "Fine-tuning de DenseNet121 pré-entraîné sur ImageNet, couches de classification remplacées et adaptées aux 10 classes PlantVillage. Accuracy 99%, F1 0.97. EarlyStopping et ReduceLROnPlateau. Meilleure performance en moins d'époques que tous les modèles from scratch." },
-      { title: 'Conclusion', body: "La progression MLP vers CNN vers ResNet vers Transfer Learning illustre concrètement l'évolution du deep learning. Chaque saut d'architecture correspond à une insight réelle : spatialité, profondeur, réutilisation des représentations. Ce projet m'a donné une base solide en vision par ordinateur et apprentissage profond appliqué." }
     ]
   },
   {
