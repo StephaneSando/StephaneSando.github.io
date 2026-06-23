@@ -52,7 +52,7 @@
   <div id="grid-view" class="container section-pad">
     <div class="section-label">// Réalisations</div>
     <h1 class="section-title">Mes projets</h1>
-    <p class="section-desc">Sept projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
+    <p class="section-desc">Neuf projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
 
     <!-- Filters -->
     <div class="filters" id="filters"></div>
@@ -297,10 +297,72 @@ var PROJECTS = [
       { title: 'Transfer Learning - DenseNet121', body: "Fine-tuning de DenseNet121 pré-entraîné sur ImageNet, couches de classification remplacées et adaptées aux 10 classes PlantVillage. Accuracy 99%, F1 0.97. EarlyStopping et ReduceLROnPlateau. Meilleure performance en moins d'époques que tous les modèles from scratch." },
       { title: 'Conclusion', body: "La progression MLP vers CNN vers ResNet vers Transfer Learning illustre concrètement l'évolution du deep learning. Chaque saut d'architecture correspond à une insight réelle : spatialité, profondeur, réutilisation des représentations. Ce projet m'a donné une base solide en vision par ordinateur et apprentissage profond appliqué." }
     ]
+  },
+  {
+    id: 'football-lake',
+    title: 'Football Data Lake',
+    cat: 'Big Data',
+    cats: ['Big Data'],
+    tint: COOL,
+    desc: "Data lake end-to-end pour prédire les résultats de Premier League : ingestion Airflow, feature engineering, XGBoost, API FastAPI - 4 DAGs, 3 zones, Docker.",
+    tech: ['Apache Airflow', 'MinIO', 'PostgreSQL', 'FastAPI', 'XGBoost', 'Docker', 'Python'],
+    metric: '1 900 matchs · H/D/A',
+    long: [
+      "~1 900 matchs Premier League sur 5 saisons (2019-2024), deux sources : CSV historiques depuis football-data.co.uk (sans authentification) et API football-data.org pour le refresh quotidien des fixtures et classements.",
+      "Architecture 3 zones : Raw (MinIO S3-compatible), Staging (PostgreSQL + feature engineering rolling window 5 matchs sans data leakage), Curated (prédictions XGBoost stockées avec probabilités H/D/A). 4 DAGs Airflow orchestrent le pipeline de bout en bout depuis l'ingestion jusqu'au réentraînement hebdomadaire. FastAPI expose 5 endpoints avec documentation Swagger auto-générée."
+    ],
+    results: [
+      { k:'Matchs', v:'~1 900 (5 saisons PL)' },
+      { k:'Architecture', v:'Raw · Staging · Curated' },
+      { k:'Orchestration', v:'4 DAGs Airflow' },
+      { k:'API', v:'5 endpoints FastAPI' }
+    ],
+    github: 'https://github.com/StephaneSando',
+    imgs: [],
+    captions: [],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Construire un data lake end-to-end pour prédire les résultats de matchs de Premier League (H=domicile, D=nul, A=extérieur). Deux sources : historique CSV 5 saisons et API REST pour les données en cours. Stack : MinIO, PostgreSQL, Airflow, XGBoost, FastAPI, Docker Compose." },
+      { title: 'Zone Raw - Ingestion', body: "DAG 01 : ingestion @once des 5 CSV historiques (football-data.co.uk) vers MinIO bucket raw-football. DAG 02 : ingestion @daily via football-data.org API (fixtures + standings saison en cours) - JSON bruts dans MinIO + upsert PostgreSQL. Rate limit 10 req/min géré par retry Airflow." },
+      { title: 'Zone Staging - Feature Engineering', body: "DAG 03 : lecture des CSV depuis MinIO, nettoyage (dates, colonnes manquantes, résultats invalides), calcul vectorisé des features de forme par équipe en rolling window 5 matchs avec shift(1) pour éviter tout data leakage. Features : points sur 5 matchs, buts marqués/concédés moyens. Insertion en PostgreSQL staging_matches." },
+      { title: 'Zone Curated - XGBoost', body: "DAG 04 : entraînement XGBoost multi-classe (H=0, D=1, A=2) sur staging_matches, split 80/20 stratifié, sauvegarde du modèle sérialisé dans MinIO. Génération des prédictions avec probabilités (prob_home, prob_draw, prob_away) insérées dans curated_predictions. Réentraînement @weekly automatique via XCom." },
+      { title: 'API Gateway - FastAPI', body: "5 endpoints documentés (Swagger auto) : /raw (liste MinIO + contenu JSON), /staging (matchs filtrables par équipe/saison), /curated (prédictions + accuracy globale), /health (état MinIO et PostgreSQL), /stats (métriques quantitatives des 3 zones). Pagination intégrée." },
+      { title: 'Infrastructure Docker', body: "docker-compose.yml avec 6 services : MinIO (9000/9001), PostgreSQL 15 (healthcheck pg_isready), Airflow webserver + scheduler + init (LocalExecutor), FastAPI (8000). init_db.sql monté automatiquement. Variables sensibles dans .env hors Git via .gitignore." }
+    ]
+  },
+  {
+    id: 'ecommerce',
+    title: 'API REST E-Commerce',
+    cat: 'Backend',
+    cats: ['Backend'],
+    tint: ACCENT,
+    desc: "API REST complète pour une plateforme e-commerce : catalogue, commandes, paiement Stripe et authentification JWT - 10 controllers Spring Boot documentés avec Swagger.",
+    tech: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'MySQL', 'Stripe', 'OpenAPI'],
+    metric: '10 controllers · JWT + Stripe',
+    long: [
+      "API REST e-commerce couvrant l'ensemble du cycle marchand : catalogue produits/catégories, gestion des commandes et articles, checkout, livraison, paiement Stripe et avis clients. Architecture Spring Boot en couches (Controller, Service, Repository, Entity) avec MySQL via JPA/Hibernate.",
+      "Authentification sans état par token JWT via Spring Security. Documentation Swagger générée automatiquement par OpenAPI 3.0. Intégration Stripe pour les paiements en ligne (PaymentIntent côté serveur). Java 22, Spring Boot 4, Maven. Aucune donnée de carte stockée en base."
+    ],
+    results: [
+      { k:'Controllers', v:'10 (User, Product, Order...)' },
+      { k:'Auth', v:'JWT + Spring Security' },
+      { k:'Paiement', v:'Stripe SDK Java 25.4' },
+      { k:'Docs', v:'OpenAPI 3 / Swagger UI' }
+    ],
+    github: 'https://github.com/StephaneSando/Ecommerce',
+    imgs: [],
+    captions: [],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Concevoir une API REST complète pour une plateforme e-commerce. Objectif : couvrir tous les besoins fonctionnels d'un site marchand réel - authentification sécurisée, catalogue produits, gestion des commandes, paiement en ligne et avis clients - avec documentation exploitable immédiatement par un frontend." },
+      { title: 'Architecture Spring Boot', body: "Architecture en couches : 10 Controllers (Category, Checkout, Delivery, Order, OrderItem, Payment, Product, Review, User), Services (logique métier), Repositories (JPA), Entities (MySQL). Java 22, Spring Boot 4, Maven. Structure packagepar domaine fonctionnel." },
+      { title: 'Authentification JWT', body: "Spring Security + jjwt 0.11.5 : génération du token à la connexion, validation sur chaque requête protégée, gestion des rôles. Sécurisation des endpoints sensibles (commandes, profil, paiement) sans session serveur côté stateless." },
+      { title: 'Paiement Stripe', body: "Intégration du Stripe Java SDK (25.4.0) dans le PaymentController : création d'un PaymentIntent, confirmation côté serveur, gestion des webhooks de confirmation de paiement. Aucune donnée de carte stockée en base - conformité PCI." },
+      { title: 'Documentation OpenAPI', body: "SpringDoc OpenAPI 3.0 génère automatiquement la documentation Swagger UI depuis les annotations des controllers. Tous les endpoints sont décrits avec leurs paramètres, codes de réponse et schémas de données. Accessible sur /swagger-ui.html sans configuration supplémentaire." },
+      { title: 'Conclusion', body: "Ce projet m'a permis de maîtriser la conception d'une API REST production-ready en Java. La combinaison Spring Security + JWT + Stripe couvre les contraintes réelles d'un e-commerce : sécurité stateless, traçabilité des commandes, fiabilité des paiements. Un complement aux projets data pour montrer une vision full-stack." }
+    ]
   }
 ];
 
-var CATS = ['Tous', 'Machine Learning', 'Big Data', 'Data Analytics', 'Data Engineering'];
+var CATS = ['Tous', 'Machine Learning', 'Big Data', 'Data Analytics', 'Data Engineering', 'Backend'];
 var currentFilter = 'Tous';
 
 function rgba22(hex) {
