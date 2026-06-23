@@ -52,7 +52,7 @@
   <div id="grid-view" class="container section-pad">
     <div class="section-label">// Réalisations</div>
     <h1 class="section-title">Mes projets</h1>
-    <p class="section-desc">Six projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
+    <p class="section-desc">Sept projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
 
     <!-- Filters -->
     <div class="filters" id="filters"></div>
@@ -87,7 +87,7 @@
           <div class="detail-results-label">RÉSULTATS</div>
           <div id="detail-results"></div>
         </div>
-        <a href="https://github.com/StephaneSando" target="_blank" rel="noopener" class="detail-github">›_ Voir le code sur GitHub</a>
+        <a id="detail-github-link" href="https://github.com/StephaneSando" target="_blank" rel="noopener" class="detail-github">›_ Voir le code sur GitHub</a>
       </div>
     </div>
   </div>
@@ -261,6 +261,38 @@ var PROJECTS = [
       { title: 'Visualisations et KPIs', body: "KPIs en haut : CA total, CA N-1, taux de croissance. CA par pays (carte + barres). CA par catégorie (Urban, Rural, Convenience). Contribution par segment. Évolution annuelle. Comparatif CA vs croissance (axe double). Filtres : année, fabricant, catégorie." },
       { title: 'Conclusion', body: "La différence entre un rapport Power BI et un vrai outil décisionnel, c'est la modélisation en étoile et les mesures DAX - sans elles, les filtres croisés ne fonctionnent pas correctement. Ce projet m'a donné une base solide en BI d'entreprise." }
     ]
+  },
+  {
+    id: 'plantes',
+    title: 'Classification Maladies des Plantes',
+    cat: 'Machine Learning',
+    cats: ['Machine Learning'],
+    tint: COOL,
+    desc: "Comparaison de 4 architectures deep learning (MLP → CNN → ResNet → Transfer Learning DenseNet121) pour détecter les maladies des plantes sur 4 000 images.",
+    tech: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Transfer Learning', 'DenseNet121', 'Scikit-learn'],
+    metric: '98% accuracy (DenseNet121)',
+    long: [
+      "4 000 images de feuilles de plantes (128×128 px), 10 classes représentant 5 plantes saines et malades : pomme, maïs, raisin, pomme de terre, tomate. L'objectif : automatiser la détection de maladies végétales sans expert agronome sur le terrain.",
+      "J'ai progressé par étapes en comparant 4 architectures : un MLP dense comme référence (70%), un CNN simple qui bondit à 97%, un CNN régularisé avec BatchNorm/Dropout pour limiter le surapprentissage, un ResNet maison avec skip connections (96%), et enfin le transfer learning sur DenseNet121 pré-entraîné ImageNet. Résultat : 98% d'accuracy en moins d'époques qu'un CNN from scratch - la preuve que réutiliser des représentations apprises sur des millions d'images change tout."
+    ],
+    results: [
+      { k:'MLP dense', v:'~70% accuracy' },
+      { k:'CNN simple', v:'~97% accuracy' },
+      { k:'ResNet maison', v:'~96% accuracy' },
+      { k:'DenseNet121 (TL)', v:'~98% accuracy' }
+    ],
+    github: 'https://github.com/StephaneSando/Classification-de-plantes',
+    imgs: [],
+    captions: [],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Détecter automatiquement les maladies des plantes à partir de photographies de feuilles. Dataset PlantVillage : ~4 000 images, 10 classes, 5 espèces (pomme, maïs, raisin, pomme de terre, tomate) en version saine et malade. Split 70% entraînement / 15% validation / 15% test." },
+      { title: 'Baseline — MLP dense', body: "Réseau fully connected sur les pixels aplatis (128×128×3). Accuracy ~70%. Montre les limites d'une approche non spatiale : un MLP ne capture pas les structures locales (textures, formes, taches) que les convolutions exploitent naturellement." },
+      { title: 'CNN simple', body: "Architecture Conv2D + MaxPooling + Dense. Accuracy ~97% avec seulement quelques couches. Démontre que les convolutions capturent bien les patterns visuels de maladies — taches, décolorations, textures anormales des feuilles." },
+      { title: 'CNN régularisé', body: "Ajout de BatchNormalization, Dropout, ElasticNet et data augmentation (rotations, flips, zoom). Accuracy ~94% sur ce dataset mais nettement plus robuste aux données out-of-distribution. Meilleure généralisation au détriment d'une légère précision sur le jeu test." },
+      { title: 'ResNet maison', body: "Implémentation des skip connections résiduelles en Keras from scratch. Accuracy ~96%. Les connexions résiduelles permettent d'entraîner des réseaux plus profonds sans dégradation du gradient — concept fondateur du deep learning moderne, ici réimplémenté à la main." },
+      { title: 'Transfer Learning — DenseNet121', body: "Fine-tuning de DenseNet121 pré-entraîné sur ImageNet, couches de classification remplacées et adaptées aux 10 classes PlantVillage. Accuracy ~98% avec EarlyStopping et ReduceLROnPlateau. Meilleure performance en moins d'époques que tous les modèles from scratch — le transfer learning prouve sa valeur dès qu'on travaille sur des images." },
+      { title: 'Conclusion', body: "La progression MLP → CNN → ResNet → Transfer Learning illustre concrètement l'évolution du deep learning. Chaque saut d'architecture correspond à une insight réelle : spatialité, profondeur, réutilisation des représentations. Ce projet m'a donné une base solide en vision par ordinateur et apprentissage profond appliqué." }
+    ]
   }
 ];
 
@@ -397,6 +429,9 @@ function openDetail(id) {
         '<span class="detail-result-v" style="color:' + p.tint + ';">' + r.v + '</span>' +
       '</div>';
     }).join('');
+
+  var ghLink = document.getElementById('detail-github-link');
+  ghLink.href = p.github || 'https://github.com/StephaneSando';
 
   document.getElementById('grid-view').style.display = 'none';
   document.getElementById('detail-view').style.display = 'block';
