@@ -122,6 +122,28 @@
     <!-- Bootstrap grid : 1 col mobile, 2 col md, 3 col lg -->
     <div class="row g-4">
 
+      <!-- AI Personal Assistant -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="projects.html#ai-assistant" class="project-card h-100">
+          <div class="project-card-thumb">
+            <div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,rgba(246,169,59,.22),transparent 62%);"></div>
+            <span class="thumb-cat" style="background:#F6A93B;">IA Générative</span>
+            <img src="img/projects/ai-assistant-workflow.png" alt="AI Personal Assistant" class="thumb-img">
+          </div>
+          <div class="card-row">
+            <h3 class="card-title">AI Personal Assistant</h3>
+            <span class="card-metric" style="color:#F6A93B;">Agent IA · RAG · n8n</span>
+          </div>
+          <p class="card-desc">Agent conversationnel n8n orchestrant Calendar, Gmail, Tasks et Contacts via tool calling, avec RAG et mémoire de session.</p>
+          <div class="card-tags">
+            <span class="tag">n8n</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Tool Calling</span>
+          </div>
+          <span class="card-cta">Voir le projet →</span>
+        </a>
+      </div>
+
       <!-- Classification Maladies des Plantes -->
       <div class="col-12 col-md-6 col-lg-4">
         <a href="projects.html#plantes" class="project-card h-100">
@@ -144,45 +166,23 @@
         </a>
       </div>
 
-      <!-- Pipeline ETL Hadoop/Spark -->
+      <!-- Football Data Lake -->
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="projects.html#etl-hadoop" class="project-card h-100">
+        <a href="projects.html#football-lake" class="project-card h-100">
           <div class="project-card-thumb">
             <div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,rgba(52,209,201,.22),transparent 62%);"></div>
             <span class="thumb-cat" style="background:#34D1C9;">Big Data</span>
-            <img src="img/projects/etl-hadoop-1.png" alt="Pipeline ETL Hadoop/Spark" class="thumb-img">
+            <img src="img/projects/football-lake-dags.png" alt="Football Data Lake" class="thumb-img">
           </div>
           <div class="card-row">
-            <h3 class="card-title">Pipeline ETL Hadoop/Spark</h3>
-            <span class="card-metric" style="color:#34D1C9;">25M+ ratings</span>
+            <h3 class="card-title">Football Data Lake</h3>
+            <span class="card-metric" style="color:#34D1C9;">1 900 matchs · H/D/A</span>
           </div>
-          <p class="card-desc">Pipeline ETL distribué sur 25M+ de notes MovieLens, architecture Medallion bronze/silver/gold.</p>
+          <p class="card-desc">Data lake end-to-end pour prédire les résultats de Premier League : Airflow, XGBoost, FastAPI - 4 DAGs, 3 zones, Docker.</p>
           <div class="card-tags">
-            <span class="tag">PySpark</span>
-            <span class="tag">Hive</span>
-            <span class="tag">HDFS</span>
-          </div>
-          <span class="card-cta">Voir le projet →</span>
-        </a>
-      </div>
-
-      <!-- Classification Qualité du Vin -->
-      <div class="col-12 col-md-6 col-lg-4">
-        <a href="projects.html#vin" class="project-card h-100">
-          <div class="project-card-thumb">
-            <div class="thumb-glow" style="background:radial-gradient(circle at 72% 22%,rgba(246,169,59,.22),transparent 62%);"></div>
-            <span class="thumb-cat" style="background:#F6A93B;">Machine Learning</span>
-            <img src="img/projects/vin-1.png" alt="Classification Qualité du Vin" class="thumb-img">
-          </div>
-          <div class="card-row">
-            <h3 class="card-title">Classification Qualité du Vin</h3>
-            <span class="card-metric" style="color:#F6A93B;">AUC 0.799</span>
-          </div>
-          <p class="card-desc">Classification binaire sur 6 497 échantillons UCI - 5 algorithmes testés, cycle ML complet.</p>
-          <div class="card-tags">
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">Python</span>
-            <span class="tag">GridSearchCV</span>
+            <span class="tag">Airflow</span>
+            <span class="tag">XGBoost</span>
+            <span class="tag">FastAPI</span>
           </div>
           <span class="card-cta">Voir le projet →</span>
         </a>

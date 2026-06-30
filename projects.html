@@ -319,8 +319,8 @@ var PROJECTS = [
       { k:'API', v:'5 endpoints FastAPI' }
     ],
     github: 'https://github.com/StephaneSando',
-    imgs: [],
-    captions: [],
+    imgs: ['football-lake-dags.png', 'football-lake-minio.png'],
+    captions: ['Les 4 DAGs Airflow actifs - ingestion CSV/API, staging et curated, tous exécutés avec succès', 'Bucket MinIO raw-football - données brutes organisées par source (api, models, premier_league)'],
     sections: [
       { title: 'Contexte - Objectif', body: "Construire un data lake end-to-end pour prédire les résultats de matchs de Premier League (H=domicile, D=nul, A=extérieur). Deux sources : historique CSV 5 saisons et API REST pour les données en cours. Stack : MinIO, PostgreSQL, Airflow, XGBoost, FastAPI, Docker Compose." },
       { title: 'Zone Raw - Ingestion', body: "DAG 01 : ingestion @once des 5 CSV historiques (football-data.co.uk) vers MinIO bucket raw-football. DAG 02 : ingestion @daily via football-data.org API (fixtures + standings saison en cours) - JSON bruts dans MinIO + upsert PostgreSQL. Rate limit 10 req/min géré par retry Airflow." },
@@ -381,8 +381,8 @@ var PROJECTS = [
       { k:'Canal', v:'Telegram (WhatsApp à venir)' }
     ],
     github: 'https://github.com/StephaneSando',
-    imgs: [],
-    captions: [],
+    imgs: ['ai-assistant-workflow.png'],
+    captions: ['Workflow n8n de l\'agent - déclenché par Telegram, mémoire et OpenAI Chat Model, 4 sous-agents (Calendar, Gmail, Tasks, Contacts)'],
     sections: [
       { title: 'Contexte - Objectif', body: "Construire un assistant personnel capable d'agir sur plusieurs outils du quotidien (agenda, emails, tâches, contacts) à partir d'une simple conversation, plutôt qu'un chatbot qui se contente de répondre à des questions." },
       { title: 'Architecture agentique', body: "Le coeur du système est une logique d'agent LLM avec tool calling dynamique : le modèle décide lui-même quel outil invoquer (Google Calendar, Gmail, Tasks, Contacts) et avec quels paramètres, plutôt que de suivre un arbre de décision figé." },
