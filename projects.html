@@ -52,7 +52,7 @@
   <div id="grid-view" class="container section-pad">
     <div class="section-label">// Réalisations</div>
     <h1 class="section-title">Mes projets</h1>
-    <p class="section-desc">Neuf projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
+    <p class="section-desc">Dix projets construits pour de vrai - pas des tutos, de vraies problématiques. Le code est sur GitHub.</p>
 
     <!-- Filters -->
     <div class="filters" id="filters"></div>
@@ -360,10 +360,42 @@ var PROJECTS = [
       { title: 'Documentation OpenAPI', body: "SpringDoc OpenAPI 3.0 génère automatiquement la documentation Swagger UI depuis les annotations des controllers. Tous les endpoints sont décrits avec leurs paramètres, codes de réponse et schémas de données. Accessible sur /swagger-ui.html sans configuration supplémentaire." },
       { title: 'Conclusion', body: "Ce projet m'a permis de maîtriser la conception d'une API REST production-ready en Java. La combinaison Spring Security + JWT + Stripe couvre les contraintes réelles d'un e-commerce : sécurité stateless, traçabilité des commandes, fiabilité des paiements. Un complement aux projets data pour montrer une vision full-stack." }
     ]
+  },
+  {
+    id: 'ai-assistant',
+    title: 'AI Personal Assistant - Agent IA agentique (n8n)',
+    cat: 'IA Générative',
+    cats: ['IA Générative'],
+    tint: ACCENT,
+    desc: "Assistant personnel conversationnel orchestrant plusieurs outils (Google Calendar, Gmail, Tasks, Contacts) via une logique d'agent LLM, avec mémoire de session et base de connaissance RAG vectorielle. Accessible par messagerie (Telegram).",
+    tech: ['n8n', 'OpenAI GPT-4o', 'LangChain Agent', 'RAG', 'Qdrant', 'Embeddings', 'Tool Calling', 'Telegram API', 'Google Workspace API'],
+    metric: 'Agent IA · RAG · n8n',
+    long: [
+      "Un assistant personnel conversationnel capable d'agir, pas seulement de répondre : consulter et modifier un agenda Google Calendar, lire et rédiger des emails Gmail, gérer des tâches et des contacts - le tout piloté depuis une simple conversation Telegram.",
+      "Construit sur n8n comme moteur d'orchestration, l'agent s'appuie sur une logique de tool calling où le LLM décide lui-même quel outil appeler et avec quels paramètres. Une base de connaissance RAG (Qdrant + embeddings OpenAI) lui permet de répondre à partir de documents ingérés, et une mémoire conversationnelle par session maintient le contexte d'un échange à l'autre."
+    ],
+    results: [
+      { k:'Tool calling', v:'Paramètres dynamiques définis par le LLM' },
+      { k:'Pipeline RAG', v:'Chunking · Embeddings OpenAI · Qdrant' },
+      { k:'Mémoire', v:'Window Buffer par session' },
+      { k:'Canal', v:'Telegram (WhatsApp à venir)' }
+    ],
+    github: 'https://github.com/StephaneSando',
+    imgs: [],
+    captions: [],
+    sections: [
+      { title: 'Contexte - Objectif', body: "Construire un assistant personnel capable d'agir sur plusieurs outils du quotidien (agenda, emails, tâches, contacts) à partir d'une simple conversation, plutôt qu'un chatbot qui se contente de répondre à des questions." },
+      { title: 'Architecture agentique', body: "Le coeur du système est une logique d'agent LLM avec tool calling dynamique : le modèle décide lui-même quel outil invoquer (Google Calendar, Gmail, Tasks, Contacts) et avec quels paramètres, plutôt que de suivre un arbre de décision figé." },
+      { title: 'Pipeline RAG', body: "Ingestion de documents, découpage en chunks, génération d'embeddings via l'API OpenAI, stockage dans une base vectorielle Qdrant. L'agent interroge cette base pour répondre avec des informations issues de documents externes, en complément de ses outils d'action." },
+      { title: 'Mémoire conversationnelle', body: "Une mémoire de type Window Buffer conserve le contexte des derniers échanges par session, pour que l'agent garde le fil d'une conversation sans tout reformuler à chaque message." },
+      { title: 'Intégration Google Workspace', body: "Connexion aux API Google Calendar, Gmail, Tasks et Contacts pour permettre à l'agent de consulter et modifier des données réelles - création d'événements, lecture d'emails, ajout de tâches - directement depuis la conversation." },
+      { title: 'Multi-canal', body: "Interface conversationnelle exposée via l'API Telegram dans un premier temps, avec une extension prévue vers WhatsApp pour élargir les canaux d'accès à l'assistant." },
+      { title: 'Conclusion', body: "Ce projet illustre le passage du chatbot classique à l'agent IA orchestrateur : un LLM qui choisit ses outils, garde le contexte et combine récupération d'information (RAG) et action concrète sur des services externes." }
+    ]
   }
 ];
 
-var CATS = ['Tous', 'Machine Learning', 'Big Data', 'Data Analytics', 'Data Engineering', 'Backend'];
+var CATS = ['Tous', 'Machine Learning', 'Big Data', 'Data Analytics', 'Data Engineering', 'Backend', 'IA Générative'];
 var currentFilter = 'Tous';
 
 function rgba22(hex) {
